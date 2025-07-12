@@ -5,9 +5,25 @@ import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import Rating from "../ratingStars/Rating";
 import { Link } from "react-router-dom";
-import { ShoppingCartContext } from "../../../context/cartContext";
+import { ShoppingCartContext } from "../../context/cartContext";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  increament,
+  decreament,
+  addCart,
+  removeFromCart,
+} from "../../store/countSlice";
 
 function Product({ product }) {
+  const dispatch = useDispatch();
+  // const count = useSelector((state) => state);
+  // console.log("count",count)
+  const cartItem = useSelector((state) => state.counter.cartItem);
+  // console.log("cartItem",cartItem);
+
+  const foundEle = cartItem?.find((el) => el?.id === product?.id);
+  // console.log("foundEle",foundEle);
+
   const { cartItems, setCartItems } = useContext(ShoppingCartContext);
 
   // state for wishlist
@@ -66,6 +82,29 @@ function Product({ product }) {
                 icon={inWishList ? faHeartSolid : faHeartRegular}
                 style={{ color: inWishList ? "#8A0000" : "#8A0000" }}
               />
+            </button>
+          </div>
+          <div className="mt-3 d-flex justify-content-center gap-5">
+            <button
+              className="btn btn-outline-warning"
+              onClick={() => {
+                dispatch(increament());
+                dispatch(addCart(product));
+              }}
+            >
+              +
+            </button>
+
+            <span>{foundEle?.count || 0}</span>
+
+            <button
+              className="btn btn-outline-warning"
+              onClick={() => {
+                dispatch(decreament());
+                dispatch(removeFromCart(product));
+              }}
+            >
+              -
             </button>
           </div>
         </div>

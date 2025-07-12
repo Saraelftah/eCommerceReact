@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { ShoppingCartContext } from "../../../../context/cartContext";
 import Rating from "../../ratingStars/Rating";
 import toast from "react-hot-toast";
+import { ShoppingCartContext } from "../../../context/cartContext";
 
 function CartItem({ item }) {
 
@@ -10,8 +10,6 @@ function CartItem({ item }) {
   function handleClick() {
     toast("Item removed from cart");
     setCartItems((prev) => prev.filter((i) => i.id !== item.id));
-
-
   }
 
   return (
