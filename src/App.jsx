@@ -8,6 +8,8 @@ import Cart from "./components/Cart/Cart";
 import ProductDetails from "./components/productDetails/ProductDetails";
 import Register from "./components/register/Register";
 import Login from "./components/login/login";
+import Wishlist from "./components/wishlist/Wishlist";
+
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -50,6 +52,7 @@ function App() {
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/wishlist" element={<Wishlist />} />
         </Routes>
       </BrowserRouter>
     </>

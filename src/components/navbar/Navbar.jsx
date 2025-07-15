@@ -3,15 +3,18 @@ import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { ShoppingCartContext } from "../../context/cartContext";
 import { useContext } from "react";
+import { useSelector } from "react-redux";
 import "./navbar.css";
 
 function Navbar() {
   const { cartItems } = useContext(ShoppingCartContext);
+  const wishlist = useSelector((state) => state.counter.wishList);
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
+          <Link className="navbar-brand fs-4" to="/">
             🛒iShop
           </Link>
 
@@ -32,12 +35,7 @@ function Navbar() {
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
             >
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <Link className="nav-link" to="/wishlist">
-                    <FontAwesomeIcon icon={faHeart} size="lg" />
-                  </Link>
-                </li>
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0 fs-5">
 
                 <li className="nav-item">
                   <Link className="nav-link active" to="/">
@@ -58,7 +56,7 @@ function Navbar() {
 
                 <li className="nav-item position-relative">
                   <Link className="nav-link" to="/cart">
-                    <FontAwesomeIcon icon={faCartShopping} size="lg" />
+                    <FontAwesomeIcon icon={faCartShopping} size="lg" className="carticon"/>
 
                     {cartItems.length > 0 && (
                       <span
@@ -66,6 +64,21 @@ function Navbar() {
                         style={{ fontSize: "0.6rem" }}
                       >
                         {cartItems.length}
+                      </span>
+                    )}
+                  </Link>
+                </li>
+
+                <li className="nav-item position-relative">
+                  <Link className="nav-link" to="/wishlist">
+                    <FontAwesomeIcon icon={faHeart} size="lg"  to="/wishlist" className="wishlisticon"/>
+
+                    {wishlist.length > 0 && (
+                      <span
+                        className="position-absolute top-5 start-100 translate-middle badge rounded-pill bg-danger"
+                        style={{ fontSize: "0.6rem" }}
+                      >
+                        {wishlist.length}
                       </span>
                     )}
                   </Link>

@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import toast from "react-hot-toast";
 import Rating from "../ratingStars/Rating";
 import { Link } from "react-router-dom";
@@ -12,38 +12,46 @@ import {
   decreament,
   addCart,
   removeFromCart,
+  addToWishlist,
+  removeFromWishlist
 } from "../../store/countSlice";
 
 function Product({ product }) {
-  const dispatch = useDispatch();
-  // const count = useSelector((state) => state);
-  // console.log("count",count)
-  const cartItem = useSelector((state) => state.counter.cartItem);
-  // console.log("cartItem",cartItem);
 
+  const dispatch = useDispatch();
+  const cartItem = useSelector((state) => state.counter.cartItem);
+ 
   const foundEle = cartItem?.find((el) => el?.id === product?.id);
   // console.log("foundEle",foundEle);
 
+  // get dispatch and selector for wishlist
+  const wishlist = useSelector ((state)=> state.counter.wishList);
+  const isInWishlist = wishlist.some((item)=>item?.id === product.id)
+
+
   const { cartItems, setCartItems } = useContext(ShoppingCartContext);
 
-  // state for wishlist
-  const [inWishList, setInWishList] = useState(false);
 
   const inCart = cartItems.some((item) => item.id === product.id);
 
   function handleClick() {
     if (inCart) {
       setCartItems((prev) => prev.filter((item) => item.id !== product.id));
-      toast("Item Removed from cart");
+      toast.error("Item Removed from cart");
     } else {
       setCartItems((prev) => [...prev, product]);
-      toast("Item added to cart");
+      toast.success("Item added to cart");
     }
   }
 
   function handleWishlist() {
-    toast("Item added to wishlist");
-    setInWishList(!inWishList);
+    if (isInWishlist) {
+      dispatch(removeFromWishlist(product))
+      toast.error("Item removed from wishlist");
+    }else{
+      dispatch(addToWishlist(product));
+      toast.success("Item added to wishlist");
+    }
   }
 
   return (
@@ -79,11 +87,13 @@ function Product({ product }) {
 
             <button onClick={handleWishlist} className="btn">
               <FontAwesomeIcon
-                icon={inWishList ? faHeartSolid : faHeartRegular}
-                style={{ color: inWishList ? "#8A0000" : "#8A0000" }}
+                icon={isInWishlist ? faHeartSolid : faHeartRegular}
+                style={{ color: isInWishlist ? "#8A0000" : "#8A0000" }}
+                className="fs-4"
               />
             </button>
           </div>
+          
           <div className="mt-3 d-flex justify-content-center gap-5">
             <button
               className="btn btn-outline-warning"

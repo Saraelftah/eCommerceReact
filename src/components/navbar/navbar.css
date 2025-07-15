@@ -1,3 +1,11 @@
 .navbar{
-      background: linear-gradient(to top, rgb(230, 248, 255), #ffffff);
+      background: linear-gradient(to bottom, rgb(230, 248, 255), #ffffff);
+}
+
+.wishlisticon:hover {
+      color: #8A0000;
+}
+
+.carticon:hover {
+      color: #63A272;
 }
