@@ -1,14 +1,14 @@
 import { useContext } from "react";
-import Rating from "../../ratingStars/Rating";
 import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
 import { ShoppingCartContext } from "../../../context/cartContext";
-import { useSelector, useDispatch } from "react-redux";
 import {
-  increament,
-  decreament,
   addCart,
+  decreament,
+  increament,
   removeFromCart,
 } from "../../../store/countSlice";
+import Rating from "../../ratingStars/Rating";
 
 function CartItem({ item }) {
   const { setCartItems } = useContext(ShoppingCartContext);

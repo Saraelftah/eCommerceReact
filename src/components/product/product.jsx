@@ -1,20 +1,20 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
+import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import toast from "react-hot-toast";
-import Rating from "../ratingStars/Rating";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { ShoppingCartContext } from "../../context/cartContext";
-import { useDispatch, useSelector } from "react-redux";
 import {
-  increament,
-  decreament,
   addCart,
-  removeFromCart,
   addToWishlist,
+  decreament,
+  increament,
+  removeFromCart,
   removeFromWishlist
 } from "../../store/countSlice";
+import Rating from "../ratingStars/Rating";
 
 function Product({ product }) {
 

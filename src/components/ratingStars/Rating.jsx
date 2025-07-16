@@ -1,5 +1,5 @@
-import { faStar, faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 import { faStar as faStarRegular } from "@fortawesome/free-regular-svg-icons";
+import { faStar, faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Rating({ value }) {

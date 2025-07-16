@@ -1,8 +1,8 @@
+import { faBoxOpen } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBoxOpen } from "@fortawesome/free-solid-svg-icons";
 import Rating from "../ratingStars/Rating";
 
 function ProductDetails() {

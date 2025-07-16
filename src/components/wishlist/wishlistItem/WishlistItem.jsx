@@ -5,7 +5,7 @@ import { removeFromWishlist } from "../../../store/countSlice";
 
 function WishlistItem({ item }) {
   const dispatch = useDispatch();
-//   const wishlist = useSelector((state) => state.counter.wishList);
+  //   const wishlist = useSelector((state) => state.counter.wishList);
 
   function handleClick() {
     dispatch(removeFromWishlist(item));

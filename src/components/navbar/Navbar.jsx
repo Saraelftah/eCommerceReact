@@ -1,9 +1,9 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faHeart } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
-import { ShoppingCartContext } from "../../context/cartContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { ShoppingCartContext } from "../../context/cartContext";
 import "./navbar.css";
 
 function Navbar() {
@@ -36,7 +36,6 @@ function Navbar() {
               id="navbarSupportedContent"
             >
               <ul className="navbar-nav me-auto mb-2 mb-lg-0 fs-5">
-
                 <li className="nav-item">
                   <Link className="nav-link active" to="/">
                     Home
@@ -56,7 +55,11 @@ function Navbar() {
 
                 <li className="nav-item position-relative">
                   <Link className="nav-link" to="/cart">
-                    <FontAwesomeIcon icon={faCartShopping} size="lg" className="carticon"/>
+                    <FontAwesomeIcon
+                      icon={faCartShopping}
+                      size="lg"
+                      className="carticon"
+                    />
 
                     {cartItems.length > 0 && (
                       <span
@@ -71,7 +74,12 @@ function Navbar() {
 
                 <li className="nav-item position-relative">
                   <Link className="nav-link" to="/wishlist">
-                    <FontAwesomeIcon icon={faHeart} size="lg"  to="/wishlist" className="wishlisticon"/>
+                    <FontAwesomeIcon
+                      icon={faHeart}
+                      size="lg"
+                      to="/wishlist"
+                      className="wishlisticon"
+                    />
 
                     {wishlist.length > 0 && (
                       <span

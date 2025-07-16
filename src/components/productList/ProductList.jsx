@@ -1,17 +1,33 @@
-import Product from "../product/product";
-import Search from "../search/Search";
+import { useEffect, useState } from "react";
 import banner from "../../assets/banner.png";
 import notFound from "../../assets/notFound.png";
-import { useState } from "react";
+import Product from "../product/product";
+import Search from "../search/Search";
+import { axiosInstance } from "../../network/interceptor";
 
-function ProductList({ products }) {
-  const [filteredProducts, setFilteredProducts] = useState(products);
+function ProductList() {
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
+  const callApi = async () => {
+    try {
+      let res = await axiosInstance.get("/products");
+      const fetchedProducts = res?.data?.products || [];
+      setProducts(fetchedProducts);
+      setFilteredProducts(fetchedProducts);
+    } catch (error) {
+      console.error("Error fetching products", error);
+    }
+  };
+
+  useEffect(() => {
+    callApi();
+  }, []);
 
   function handleSearch(query) {
     const filtered = products.filter((item) =>
       item.title.toLowerCase().includes(query.toLowerCase())
     );
-
     setFilteredProducts(filtered);
   }
 
@@ -19,6 +35,7 @@ function ProductList({ products }) {
     <>
       <img src={banner} alt="Banner" className="img-fluid mb-4 mt-1" />
       <Search onSearch={handleSearch} />
+
       <div className="container-fluid min-vh-100 py-4">
         <div className="row g-4">
           {filteredProducts.length > 0 ? (

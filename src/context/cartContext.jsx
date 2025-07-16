@@ -17,7 +17,6 @@ try {
 }
 
 function ShoppingCartContextProvider({ children }) {
-  
   const [cartItems, setCartItems] = useState(initialCartItems);
 
   useEffect(() => {

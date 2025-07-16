@@ -1,13 +1,14 @@
-.search-input{
+.search-input {
     outline: none;
     background: linear-gradient(to bottom, rgb(230, 248, 255), #ffffff);
 }
+
 .search-input:focus {
     outline: 2px solid #87CEFA;
 
 }
 
-.search-container .search-icon{
+.search-container .search-icon {
     right: 15px;
-   
+
 }
