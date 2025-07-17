@@ -3,26 +3,14 @@ import banner from "../../assets/banner.png";
 import notFound from "../../assets/notFound.png";
 import Product from "../product/product";
 import Search from "../search/Search";
-import { axiosInstance } from "../../network/interceptor";
 
-function ProductList() {
-  const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
+function ProductList({ products }) {
 
-  const callApi = async () => {
-    try {
-      let res = await axiosInstance.get("/products");
-      const fetchedProducts = res?.data?.products || [];
-      setProducts(fetchedProducts);
-      setFilteredProducts(fetchedProducts);
-    } catch (error) {
-      console.error("Error fetching products", error);
-    }
-  };
+  const [filteredProducts, setFilteredProducts] = useState(products);
 
-  useEffect(() => {
-    callApi();
-  }, []);
+   useEffect(() => {
+    setFilteredProducts(products);
+  }, [products]);
 
   function handleSearch(query) {
     const filtered = products.filter((item) =>

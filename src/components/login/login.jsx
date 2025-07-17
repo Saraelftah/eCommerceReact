@@ -51,7 +51,7 @@ function Login() {
           <div>
             <label htmlFor="password">Password</label>
             <input
-              type="text"
+              type="password"
               id="password"
               name="password"
               placeholder="Enter your password..."

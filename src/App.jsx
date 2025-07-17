@@ -1,7 +1,8 @@
-import { lazy, Suspense} from "react";
+import { lazy, Suspense, useEffect, useState} from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Cart from "./components/Cart/Cart";
+import { axiosInstance } from "./network/interceptor";
 import Navbar from "./components/navbar/Navbar";
 
 
@@ -14,6 +15,22 @@ const Wishlist = lazy(() => import("./components/wishlist/Wishlist"));
 const ProductList = lazy(() => import("./components/productList/ProductList"));
 
 function App() {
+    const [products, setProducts] = useState([]);
+
+     const callApi = async () => {
+    try {
+      let res = await axiosInstance.get("/products");
+      const fetchedProducts = res?.data?.products;
+      setProducts(fetchedProducts);
+
+    } catch (error) {
+      console.error("Error fetching products", error);
+    }
+  };
+
+  useEffect(() => {
+    callApi();
+  }, []);
 
   return (
     <>
@@ -33,7 +50,7 @@ function App() {
           }
         >
           <Routes>
-            <Route path="/" element={<ProductList />} />
+            <Route path="/" element={<ProductList products={products}/>} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/register" element={<Register />} />

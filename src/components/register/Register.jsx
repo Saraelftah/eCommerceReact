@@ -1,7 +1,9 @@
 import { useState } from "react";
 import "./register.css";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
+  const navigate = useNavigate();
   const [userData, setUserData] = useState({
     username: "",
     email: "",
@@ -19,6 +21,7 @@ function Register() {
     if (!userData) {
       alert("Please fill in all fields");
     }
+    navigate("/login");
   }
 
   return (
@@ -60,7 +63,7 @@ function Register() {
           <div>
             <label htmlFor="password">Password</label>
             <input
-              type="text"
+              type="password"
               name="password"
               id="password"
               onChange={handleChange}
