@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import banner from "../../assets/banner.png";
 import notFound from "../../assets/notFound.png";
 import Product from "../product/product";
 import Search from "../search/Search";
@@ -21,7 +20,6 @@ function ProductList({ products }) {
 
   return (
     <>
-      <img src={banner} alt="Banner" className="img-fluid mb-4 mt-1" />
       <Search onSearch={handleSearch} />
 
       <div className="container-fluid min-vh-100 py-4">

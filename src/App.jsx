@@ -64,14 +64,3 @@ function App() {
 }
 
 export default App;
-
-// id
-// title
-// brand
-// description
-// rating
-// price
-// stock
-//discountPercentage
-// category
-// availabilityStatus
