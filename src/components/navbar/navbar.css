@@ -9,3 +9,49 @@
 .carticon:hover {
       color: #63A272;
 }
+
+/* Dropdown-style collapsed menu (mobile) */
+.navbar .container-fluid {
+      position: relative;
+}
+
+.dropdown-collapse {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 1rem;
+      background: #ffffff;
+      border-radius: 0.5rem;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.12);
+      width: 220px;
+      z-index: 1050;
+      display: none;
+      padding: 0.25rem 0;
+}
+
+.dropdown-collapse.show {
+      display: block;
+}
+
+.dropdown-collapse .navbar-nav {
+      flex-direction: column;
+}
+
+.dropdown-collapse .nav-link {
+      padding: 0.5rem 1rem;
+      color: #333;
+}
+
+@media (min-width: 992px) {
+      .dropdown-collapse {
+            position: static;
+            display: flex !important;
+            width: auto;
+            background: transparent;
+            box-shadow: none;
+            padding: 0;
+      }
+
+      .dropdown-collapse .navbar-nav {
+            flex-direction: row;
+      }
+}

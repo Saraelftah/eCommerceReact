@@ -19,7 +19,7 @@ function Navbar() {
           </Link>
 
           <button
-            className="navbar-toggler"
+            className="navbar-toggler ms-auto"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -32,10 +32,10 @@ function Navbar() {
 
           <div className="navbar-btn">
             <div
-              className="collapse navbar-collapse"
+              className="collapse navbar-collapse dropdown-collapse"
               id="navbarSupportedContent"
             >
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0 fs-5">
+              <ul className="navbar-nav ms-auto mb-2 mb-lg-0 fs-5">
                 <li className="nav-item">
                   <Link className="nav-link active" to="/">
                     Home
@@ -53,8 +53,8 @@ function Navbar() {
                   </Link>
                 </li>
 
-                <li className="nav-item position-relative">
-                  <Link className="nav-link" to="/cart">
+                <li className="nav-item">
+                  <Link className="nav-link position-relative" to="/cart">
                     <FontAwesomeIcon
                       icon={faCartShopping}
                       size="lg"
@@ -63,8 +63,8 @@ function Navbar() {
 
                     {cartItems.length > 0 && (
                       <span
-                        className="position-absolute top-5 start-100 translate-middle badge rounded-pill bg-danger"
-                        style={{ fontSize: "0.6rem" }}
+                        className="position-absolute top-5 translate-middle badge rounded-pill bg-danger"
+                        style={{ fontSize: "0.6rem", padding: "0.35em 0.5em" }}
                       >
                         {cartItems.length}
                       </span>
@@ -83,7 +83,7 @@ function Navbar() {
 
                     {wishlist.length > 0 && (
                       <span
-                        className="position-absolute top-5 start-100 translate-middle badge rounded-pill bg-danger"
+                        className="position-absolute top-5 translate-middle badge rounded-pill bg-danger"
                         style={{ fontSize: "0.6rem" }}
                       >
                         {wishlist.length}

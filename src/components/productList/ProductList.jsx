@@ -5,27 +5,20 @@ import Search from "../search/Search";
 
 function ProductList({ products }) {
 
-  const [filteredProducts, setFilteredProducts] = useState(products);
+  const [displayProducts, setDisplayProducts] = useState(products);
 
    useEffect(() => {
-    setFilteredProducts(products);
+    setDisplayProducts(products);
   }, [products]);
-
-  function handleSearch(query) {
-    const filtered = products.filter((item) =>
-      item.title.toLowerCase().includes(query.toLowerCase())
-    );
-    setFilteredProducts(filtered);
-  }
 
   return (
     <>
-      <Search onSearch={handleSearch} />
+      <Search products={products} setFiltered={setDisplayProducts}/>
 
       <div className="container-fluid min-vh-100 py-4">
         <div className="row g-4">
-          {filteredProducts.length > 0 ? (
-            filteredProducts.map((product) => (
+          {displayProducts.length > 0 ? (
+            displayProducts.map((product) => (
               <Product key={product.id} product={product} />
             ))
           ) : (
