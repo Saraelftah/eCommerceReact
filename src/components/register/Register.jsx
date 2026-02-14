@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./register.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Register() {
   const navigate = useNavigate();
@@ -25,8 +25,13 @@ function Register() {
   }
 
   return (
-    <section className="register">
-      <div className="w-50 m-auto p-5 rounded-4 login-form">
+    <section className="row justify-content-center register">
+      <div className="col-12 col-md-8 col-lg-6 m-auto p-5 rounded-4 login-form">
+        <div className="mb-4 p-3 text-center">
+          <Link className="navbar-brand fs-2" to="/">
+            🛒iShop
+          </Link>
+        </div>
         <h2 className="mb-2">Register</h2>
         <form onSubmit={handleFormSubmit}>
           {/* name */}
@@ -74,7 +79,15 @@ function Register() {
             />
           </div>
 
-          <button className="btn btn-primary mt-4">Register</button>
+          <div>
+            <p className="mt-3">
+              Already have an account? <a href="/login">Login</a>
+            </p>
+          </div>
+
+          <button className="btn btn-primary mt-4 col-12 col-md-2">
+            Register
+          </button>
         </form>
       </div>
     </section>

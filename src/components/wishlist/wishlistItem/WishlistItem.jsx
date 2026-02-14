@@ -13,10 +13,17 @@ function WishlistItem({ item }) {
   }
 
   return (
-    <div className="container p-4 bg-light mt-5 rounded-4 d-flex justify-content-between">
-      <div>
+    <div className="container p-4 bg-light mt-5 rounded-4 d-flex flex-column flex-md-row justify-content-md-between gap-4 justify-content-center align-items-center">
+      <img
+        src={item.images[0]}
+        className=""
+        alt={item.title}
+        style={{ maxWidth: "300px" }}
+      />
+
+      <div className="w-100 w-md-50">
         <h5>{item.title}</h5>
-        <p className="w-50">{item.description}</p>
+        <p className="text-muted">{item.description}</p>
         <p>
           {" "}
           <Rating value={item.rating} />{" "}
@@ -36,13 +43,6 @@ function WishlistItem({ item }) {
           </button>
         </div>
       </div>
-
-      <img
-        src={item.images[0]}
-        className=""
-        alt={item.title}
-        style={{ maxWidth: "300px" }}
-      />
     </div>
   );
 }

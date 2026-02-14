@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./login.css";
 
 function Login() {
@@ -28,8 +28,13 @@ function Login() {
   }
 
   return (
-    <section className="login">
-      <div className="w-50 m-auto p-5 rounded-4 login-form">
+    <section className="row justify-content-center login">
+      <div className="col-12 col-md-8 col-lg-6 m-auto p-5 rounded-4 login-form">
+        <div className="mb-4 p-3 text-center">
+          <Link className="navbar-brand fs-2" to="/">
+            🛒iShop
+          </Link>
+        </div>
         <h2 className="mb-2">Login</h2>
         <form onSubmit={handleSubmit}>
           {/* email */}
@@ -62,7 +67,15 @@ function Login() {
             />
           </div>
 
-          <button className="btn btn-primary mt-4">Login</button>
+          <div>
+            <p className="mt-3">
+              Don't have an account? <a href="/register">Register</a>
+            </p>
+          </div>
+
+          <button className="btn btn-primary mt-4 col-12 col-md-2">
+            Login
+          </button>
         </form>
       </div>
     </section>

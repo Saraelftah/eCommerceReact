@@ -56,7 +56,7 @@ function Product({ product }) {
 
   return (
     <div className="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">
-      <div className="card w-100 shadow p-3 mb-5 bg-body-tertiary rounded">
+      <div className="card w-100 shadow p-3 mb-5 bg-light rounded-4">
         <Link to={`/product/${product.id}`}>
           <img
             src={product.images[0]}

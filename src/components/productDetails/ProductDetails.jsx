@@ -81,8 +81,14 @@ function ProductDetails() {
   }
 
   return (
-    <div className="container py-4 bg-light mt-5 rounded d-flex justify-content-between">
-      <div className="w-50">
+    <div className="container py-4 bg-light mt-5 rounded d-flex flex-column flex-md-row justify-content-md-between gap-4 justify-content-center align-items-center">  
+      <img
+        src={product.images[0]}
+        alt={product.title}
+        style={{ maxWidth: "300px" }}
+      />
+
+      <div className="w-100 w-md-50">
         <div className="d-flex align-items-center gap-3 mb-4 ">
           <h2 className="fw-bold">{product.title}</h2>
           <button onClick={handleWishlist} className="btn">
@@ -145,12 +151,6 @@ function ProductDetails() {
           </button>
         </div>
       </div>
-
-      <img
-        src={product.images[0]}
-        alt={product.title}
-        style={{ maxWidth: "300px" }}
-      />
     </div>
   );
 }
